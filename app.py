@@ -26,9 +26,11 @@ def skills():
 def skills_toeic(toeic_score):
 	return "My TOEIC score is %d / 90." % toeic_score
 
-@app.route("/projects/")
-def projects():
-	return "Projects"
+# You can set default values in case there's no input from the user.
+@app.route("/projects/", defaults={'amount': 0})
+@app.route("/projects/<int:amount>")
+def projects(amount):
+	return "I have %d project/s to date." % amount
 
 @app.route("/contact/")
 def contact():
